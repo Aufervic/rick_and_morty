@@ -32,7 +32,7 @@ const Detail = () => {
       <h2>ESTADO | {character.status}</h2>
       <h2>ESPECIE | {character.especie}</h2>
       <h2>GÉNERO | {character.género}</h2>
-      <h2>ORIGEN | {character.origin?character.origin.name:"UNKNOWN"}</h2>
+      <h2>ORIGEN | {character.origin?.name}</h2>
       <img src={character.image} alt='' />
     </div>
   )
