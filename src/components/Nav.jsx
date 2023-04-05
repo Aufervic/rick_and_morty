@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
-const Nav = ({onSearch}) => {
+const Nav = ({onSearch, logout}) => {
 
   return(
     <div>
@@ -13,9 +13,9 @@ const Nav = ({onSearch}) => {
         <button>About</button>
       </Link>
       <button onClick={()=>onSearch(Math.floor(Math.random()*826)+1)}>Random</button>
+      <button onClick={logout}>Log out</button>
     </div>
   )
-
 }
 
 export default Nav;

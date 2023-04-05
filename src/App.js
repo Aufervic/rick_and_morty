@@ -31,6 +31,10 @@ function App() {
       }
    }
 
+   function logout(){
+      setAccess(false);
+      navigate('/');
+   }
 
    useEffect(() => {
       !access && navigate('/');
@@ -63,7 +67,7 @@ function App() {
 
    return (
       <div className='App'>
-         {pathname !== '/' && <Nav onSearch={onSearch} />}
+         {pathname !== '/' && <Nav onSearch={onSearch} logout={logout}/>}
          
          <Routes>
             <Route path='/' element={<Form login={login}/>}/>
