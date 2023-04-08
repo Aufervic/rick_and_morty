@@ -13,7 +13,8 @@ import Detail from './components/Detail';
 import Error from './components/Error';
 import Form from './components/form/Form';
 
-
+const URL_BASE='https://be-a-rym.up.railway.app/api/character'
+const API_KEY = '8084360b4c34.9565dd748a2bc62f3aa9'
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
          if(character.id === parseInt(id)) return window.alert('¡El ID ya fue agregado!');
       }
 
-      axios(`https://rickandmortyapi.com/api/character/${id}`)
+      axios(`${URL_BASE}/${id}?key=${API_KEY}`)
       .then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
