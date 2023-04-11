@@ -1,5 +1,4 @@
-import Card from './Card';
-import '../App.css';
+import Card from '../Card/Card';
 
 export default function Cards({characters, onClose}) {
    

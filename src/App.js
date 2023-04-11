@@ -3,15 +3,12 @@ import { useState, useEffect } from 'react';
 import {Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import './App.css';
-import Card from './components/Card';
-import Cards from './components/Cards';
-import SearchBar from './components/SearchBar';
-//import characters, { Rick } from './data';
-import Nav from './components/Nav';
-import About from './components/About';
-import Detail from './components/Detail';
-import Error from './components/Error';
-import Form from './components/form/Form';
+import Cards from './components/Cards/Cards';
+import Nav from './components/Nav/Nav';
+import About from './components/About/About';
+import Detail from './components/Detail/Detail';
+import Error from './components/Error/Error';
+import Form from './components/Forms/Form';
 
 const URL_BASE='https://be-a-rym.up.railway.app/api/character'
 const API_KEY = '8084360b4c34.9565dd748a2bc62f3aa9'
@@ -39,7 +36,7 @@ function App() {
 
    useEffect(() => {
       !access && navigate('/');
-   }, [access]);
+   }, [access, navigate]);
       
    const onSearch = (id) => {
       //setCharacters(characters.concat(data))
