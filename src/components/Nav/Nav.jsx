@@ -9,9 +9,13 @@ const Nav = ({onSearch, logout}) => {
       <Link to='/home'>
         <button>Home</button>
       </Link>
+      <Link to='/favorites'>
+        <button>Favorites</button>
+      </Link>
       <Link to='/about'>
         <button>About</button>
       </Link>
+      
       <button onClick={()=>onSearch(Math.floor(Math.random()*826)+1)}>Random</button>
       <button onClick={logout}>Log out</button>
     </div>

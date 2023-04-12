@@ -50,13 +50,13 @@ const Form = ({ login }) => {
     <section className={style.formSection}>
       <form className={style.form} onSubmit={handleSubmit}>
         <div className={style.inputBlock}>
-          <label for="login-email">E-mail</label>
+          <label htmlFor="login-email">E-mail</label>
           <input name='email' id="login-email" type="email" required value={userData.email} onChange={handleChange}/>
           <p>{errors.email}</p>
         </div>
 
         <div className={style.inputBlock}>
-          <label for="login-password">Password</label>
+          <label htmlFor="login-password">Password</label>
           <input name='password' id="login-password" type="password" required value={userData.password} onChange={handleChange}/>
           <p>{errors.password}</p>
         </div>
