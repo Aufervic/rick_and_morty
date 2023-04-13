@@ -1,21 +1,25 @@
 
 .formSection {
+	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 }
 
 
 .form {
-	overflow: hidden;
 	min-width: 260px;
-	margin-top: 50px;
+	margin-top: 20px;
 	padding: 30px 25px;
   border-radius: 5px;
-	transform-origin: top;
+
   background-color: #fff;
 }
+
+.FormImage{
+	width: 200px;
+}
+
 
 .inputBlock {
 	margin-bottom: 20px;

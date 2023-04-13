@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react';
-
+import style from './Detail.module.css'
 
 const Detail = () => {
   let {id} = useParams()
@@ -23,17 +23,41 @@ const Detail = () => {
   
   if(!Object.keys(character).length)
     return(
-      <div>No hay datos</div>
+      <h2>Cargando...</h2>
     )
   
   return (
-    <div>
-      <h2>{character.name}</h2>
-      <h2>ESTADO | {character.status}</h2>
-      <h2>ESPECIE | {character.especie}</h2>
-      <h2>GÉNERO | {character.género}</h2>
-      <h2>ORIGEN | {character.origin?.name}</h2>
-      <img src={character.image} alt='' />
+    <div className={style.Container}>
+      <div className={style.Card}>
+        <p className={style.characterID}>{character.id}</p>
+       
+
+          <img src={character.image} alt='' className={style.Img}/>
+          <div className={style.Info}>
+            <div className={style.InfoItem}>
+              <span className={style.InfoItemName}>Nombre: </span>
+              <span className={style.InfoItemValue}>{character.name}</span> 
+            </div>
+            <div className={style.InfoItem}>
+              <span className={style.InfoItemName}>Status: </span>
+              <span className={style.InfoItemValue}>{character.status}</span> 
+            </div>
+            <div className={style.InfoItem}>
+              <span className={style.InfoItemName}>Specie: </span>
+              <span className={style.InfoItemValue}>{character.species}</span> 
+            </div>
+            <div className={style.InfoItem}>
+              <span className={style.InfoItemName}>Gender: </span>
+              <span className={style.InfoItemValue}>{character.gender}</span> 
+            </div>
+            <div className={style.InfoItem}>
+              <span className={style.InfoItemName}>Origin: </span>
+              <span className={style.InfoItemValue}>{character.origin?.name}</span> 
+            </div>
+
+          </div>
+
+      </div>
     </div>
   )
   

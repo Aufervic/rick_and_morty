@@ -2,6 +2,8 @@ import { useState } from "react";
 import validate from "./validation";
 import style from "./Form.module.css";
 
+import LoginImage from  '../../assets/rick-and-morty.png'
+
 const Form = ({ login }) => {
   const [userData, setUserData] = useState({
     email: "",
@@ -33,22 +35,11 @@ const Form = ({ login }) => {
   };
 
   return (
-    // <form onSubmit={handleSubmit} className={style.login}>
-    //   <div className={style.cardForm}>
-    //     <label htmlFor="email">Email:</label>
-    //     <input name='email' type="email" placeholder="" value={userData.email} onChange={handleChange}/>
-    //     <p>{errors.email}</p>
-
-    //     <label htmlFor="password">Password:</label>
-    //     <input name='password' type="password" placeholder="" value={userData.password} onChange={handleChange}/>
-    //     <p>{errors.password}</p>
-
-    //     <button className={style.cardForm}>Submit</button>
-    //   </div>
-
-    // </form>
     <section className={style.formSection}>
       <form className={style.form} onSubmit={handleSubmit}>
+
+          <img src={LoginImage} alt="" className={style.FormImage}/>
+
         <div className={style.inputBlock}>
           <label htmlFor="login-email">E-mail</label>
           <input name='email' id="login-email" type="email" required value={userData.email} onChange={handleChange}/>

@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux"
 import { useState } from "react"
 import Card from "../Card/Card"
 import { filterCards, orderCards } from "../../redux/action"
-
+import style from './Favorites.module.css'
 
 
 const Favorites = ({myFavorites, onClose}) => {
   const dispatch = useDispatch()
 
-  const [aux,setAux]= useState(false)
+  const [aux, setAux]= useState(false)
 
   const handleOrder = (event) => {
     dispatch(orderCards(event.target.value))
@@ -22,9 +22,9 @@ const Favorites = ({myFavorites, onClose}) => {
   }
 
   return (
-    <div className='Cards'>
+    <div className={style.Container}>
       <select name="order" id="1" onChange={handleOrder}>
-        <option value="A">AScendente</option>
+        <option value="A">Ascendente</option>
         <option value="D">Descendente</option>
       </select>
       <select name="filter" id="2" onChange={handleFilter}>
@@ -35,21 +35,25 @@ const Favorites = ({myFavorites, onClose}) => {
         <option value="unknown">unknown</option>
 
       </select>
-      {myFavorites.map((character) =>{
-        return (
-          <Card key={character.id}
-            id={character.id}
-            name={character.name}
-            status={character.status}
-            species={character.species}
-            gender={character.gender}
-            origin={character.origin.name}
-            image={character.image}
-            onClose={onClose}
-          />
-        )
-      })}
+      <div className={style.Cards}>
+        {myFavorites.map((character) =>{
+          return (
+            
+              <Card key={character.id}
+                id={character.id}
+                name={character.name}
+                status={character.status}
+                species={character.species}
+                gender={character.gender}
+                origin={character.origin}
+                image={character.image}
+                onClose={onClose}
+              />
+        
+          )
+        })}
       </div>
+    </div>
   )
 }
 

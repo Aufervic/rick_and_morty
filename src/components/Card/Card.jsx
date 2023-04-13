@@ -1,7 +1,8 @@
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux';
-import { addFav, removeFav} from '../../redux/action'
 import { useState, useEffect } from 'react';
+import { addFav, removeFav} from '../../redux/action'
+import style from './Card.module.css'
 
 function Card(props) {
    let [isFav, setIsFav] = useState(false)
@@ -27,21 +28,22 @@ function Card(props) {
    }
 
    return (
-      <div>
-         {
-            isFav?(
-               <button onClick={handleFavorite}>❤️</button>
-            ):(
-               <button onClick={handleFavorite}>🤍</button>
-            )
-         }
-         <button onClick={()=> props.onClose(props.id)}>X</button>
-         <h2><Link to={`/detail/${props.id}`}>{props.name}</Link></h2>
-         <h2>{props.status}</h2>
-         <h2>{props.especie}</h2>
-         <h2>{props.género}</h2>
-         <h2>{props.origin}</h2>
-         <img src={props.image} alt='' />
+      <div className={style.Card}>
+         {<button onClick={handleFavorite} className={style.btnFav}>{isFav?'❤️':'🤍'}</button>}
+         <button onClick={()=> props.onClose(props.id)} className={style.btnClose}>X</button>
+         <NavLink to={`/detail/${props.id}`} className={style.navLink}>
+            
+            <p className={style.characterID}>{props.id}</p>
+            <img src={props.image} alt='' className={style.img} />
+
+            <div className={style.info}>
+               <p className={style.characterName}>{props.name}</p>
+               <p className={style.characterOrigin}>🌌 {props.origin}</p>
+               <p className={style.characterData}>{props.status}</p>
+               <p className={style.characterData}>{props.species}</p>
+               <p className={style.characterData}>{props.gender}</p>
+            </div>
+         </NavLink>
       </div>
    );
 }
