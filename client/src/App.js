@@ -51,7 +51,8 @@ function App(props) {
          }
       }
 
-      axios(`${URL_BASE}/${id}?key=${API_KEY}`)
+      //axios(`${URL_BASE}/${id}?key=${API_KEY}`)
+      axios(`http://localhost:3001/rickandmorty/character/${id}`)
       .then(({ data }) => {
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
