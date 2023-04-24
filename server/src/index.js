@@ -1,6 +1,5 @@
 const http = require('http')
-const data = require('./utils/data')
- const {getCharById} = require('./controllers/getCharById')
+const {getCharById} = require('./controllers/getCharById')
 
 
 http.createServer((req, res) => {
@@ -9,6 +8,8 @@ http.createServer((req, res) => {
   const {url} = req
   
   if(url.includes('/rickandmorty/character')){
+	//let pos = url.lastIndexOf('/')
+	//let id = url.split('/').at(-1)
     let id = url.split('/')[3]
 
     getCharById(res, id)
