@@ -23,7 +23,8 @@ function Card(props) {
          props.removeFav(props.id)
       }else{
          setIsFav(true)
-         props.addFav(props)
+         const {id, name, gender, species, origin, image, status} = props
+         props.addFav({id, name, gender, species, origin, image, status})
       }
    }
 

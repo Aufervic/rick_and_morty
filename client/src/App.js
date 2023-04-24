@@ -16,7 +16,7 @@ import { removeFav } from './redux/action';
 
 const URL_BASE='https://be-a-rym.up.railway.app/api/character'
 const API_KEY = '8084360b4c34.9565dd748a2bc62f3aa9'
-
+const URL='http://localhost:3001/rickandmorty/login'
 
 function App(props) {
    let [characters, setCharacters] = useState([])
@@ -27,10 +27,15 @@ function App(props) {
    const PASSWORD='123456'
 
    function login(userData) {
-      if (userData.password === PASSWORD && userData.email === EMAIL) {
-         setAccess(true);
-         navigate('/home');
-      }
+      const {email, password} = userData
+
+      axios(`${URL}?email=${email}&password=${password}`)
+         .then(({data})=>{
+            
+            const {access} = data
+            setAccess(access);
+            access && navigate('/home');
+         })
    }
 
    function logout(){
