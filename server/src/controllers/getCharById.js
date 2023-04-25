@@ -27,7 +27,8 @@ const getCharById = async (req, res) => {
 
     success(data, res)
     
-  }catch(err){
+  }catch(error){
+    
     errorHandler(error, res)
   }
   

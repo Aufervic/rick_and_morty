@@ -12,6 +12,7 @@ router.get('/character/:id', (req, res) => {
 
 
 router.get('/login', (req, res) => {
+  // http://localhost:3001/rickandmorty/login?email=aufer@email.com&password=123456
   login(req, res)
 })
 
