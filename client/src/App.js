@@ -26,16 +26,14 @@ function App(props) {
    const EMAIL='aufer@email.com'
    const PASSWORD='123456'
 
-   function login(userData) {
+   async function login(userData) {
       const {email, password} = userData
 
-      axios(`${URL}?email=${email}&password=${password}`)
-         .then(({data})=>{
-            
-            const {access} = data
-            setAccess(access);
-            access && navigate('/home');
-         })
+      const {data} = await axios(`${URL}?email=${email}&password=${password}`)
+      const {access} = data
+      setAccess(access);
+      access && navigate('/home');
+
    }
 
    function logout(){
@@ -47,7 +45,7 @@ function App(props) {
       !access && navigate('/');
    }, [access, navigate]);
       
-   const onSearch = (id) => {
+   const onSearch = async (id) => {
       //setCharacters(characters.concat(data))
       //setCharacters([...characters, data])
       for(const character of characters){
@@ -55,16 +53,17 @@ function App(props) {
             return window.alert('¡El ID ya fue agregado!');
          }
       }
-
-      //axios(`${URL_BASE}/${id}?key=${API_KEY}`)
-      axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
+      try{
+         const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
          if (data.name) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
             window.alert('¡No hay personajes con este ID!');
          }
-      }).catch(()=>window.alert('¡Este ID no existe!'))
+      }catch(err){
+         window.alert('¡Este ID no existe!')
+      }
+      
    }
 
    const onClose = (id)=>{

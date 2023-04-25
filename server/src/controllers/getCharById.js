@@ -19,13 +19,18 @@ const errorHandler = (error, res) => {
 
 
 
-const getCharById = (req, res) => {
+const getCharById = async (req, res) => {
+  try{
+    const {id}= req.params
   
-  const {id}= req.params
+    const {data} = await axios.get(`${URL}/character/${id}?key=${KEY}`)
+
+    success(data, res)
+    
+  }catch(err){
+    errorHandler(error, res)
+  }
   
-  axios.get(`${URL}/character/${id}?key=${KEY}`)
-    .then(({data}) => success(data, res))
-    .catch((error) => errorHandler(error, res))
 }
 
 module.exports = {
