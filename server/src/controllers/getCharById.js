@@ -1,8 +1,7 @@
+require('dotenv').config()
 const axios = require('axios')
 
-const URL = 'https://be-a-rym.up.railway.app/api'
-const KEY = '8084360b4c34.9565dd748a2bc62f3aa9'
-
+const { API_URL} =  process.env
 
 const success = (data, res) =>{
   const {id, name, gender, species, origin, image, status} = data
@@ -13,7 +12,6 @@ const success = (data, res) =>{
 }
 
 const errorHandler = (error, res) => {
- 
   res.status(500).send(error.message)
 }
 
@@ -22,13 +20,11 @@ const errorHandler = (error, res) => {
 const getCharById = async (req, res) => {
   try{
     const {id}= req.params
-  
-    const {data} = await axios.get(`${URL}/character/${id}?key=${KEY}`)
+    const {data} = await axios.get(`${API_URL}/${id}`)
 
     success(data, res)
     
   }catch(error){
-    
     errorHandler(error, res)
   }
   
